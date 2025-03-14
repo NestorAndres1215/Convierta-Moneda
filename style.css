@@ -1,5 +1,212 @@
+/* Estilos generales */
+body {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
 
+.container {
+    max-width: 800px;
+    padding: 40px 20px;
+}
+
+/* Diseño de la tarjeta principal */
+.converter-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.converter-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+}
+
+/* Encabezado */
+.card-header {
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.header-icon {
+    font-size: 2rem;
+    color: #3498db;
+    margin-bottom: 15px;
+    display: block;
+}
 
 h1 {
-    color: #007bff;
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    position: relative;
+    display: inline-block;
+}
+
+h1:after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    margin: 10px auto 0;
+}
+
+/* Estilos de los campos del formulario */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.form-group label i {
+    margin-right: 8px;
+    color: #3498db;
+}
+
+.form-control {
+    border: 2px solid #eaedf2;
+    border-radius: 10px;
+    padding: 15px;
+    height: auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.form-control:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Botón de intercambio */
+.swap-button-container {
+    display: flex;
+    justify-content: center;
+    margin: -10px 0;
+    position: relative;
+    z-index: 10;
+}
+
+#swap-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 2px solid #3498db;
+    color: #3498db;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+#swap-button:hover {
+    transform: rotate(180deg);
+    background-color: #3498db;
+    color: white;
+}
+
+/* Botón de conversión */
+.btn-primary {
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background: linear-gradient(90deg, #2980b9, #27ae60);
+    box-shadow: 0 7px 20px rgba(52, 152, 219, 0.6);
+    transform: translateY(-2px);
+}
+
+.btn-primary i {
+    margin-right: 8px;
+}
+
+/* Estilos del resultado */
+#result {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-top: 25px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    border-left: 5px solid #3498db;
+}
+
+/* Última actualización */
+.last-update {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: #7f8c8d;
+}
+
+.last-update i {
+    margin-right: 5px;
+}
+
+/* Diseño responsive */
+@media (max-width: 768px) {
+    .converter-card {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animación para el resultado */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.result-visible {
+    opacity: 1 !important;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+/* Animación para los campos de texto */
+.form-control:focus {
+    transform: translateY(-3px);
+}
+
+/* Estilo para el símbolo de moneda */
+.currency-symbol {
+    font-weight: bold;
+    color: #3498db;
 }

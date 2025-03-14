@@ -1,48 +1,129 @@
+// Tasas de cambio (actualizadas a fecha de marzo 2025)
+// Estas tasas son relativas al dólar estadounidense (USD)
+const exchangeRates = {
+    USD: 1.00,    // Dólar estadounidense (base)
+    PEN: 3.78,    // Sol peruano
+    ARS: 1050.50, // Peso argentino 
+    MXN: 19.20,   // Peso mexicano
+    CLP: 950.20,  // Peso chileno
+    COP: 3850.75, // Peso colombiano
+    BRL: 5.25,    // Real brasileño
+    VES: 36.80,   // Bolívar venezolano
+    PYG: 7420.30, // Guaraní paraguayo
+    EUR: 0.92,    // Euro
+};
+
+// Símbolos de moneda
+const currencySymbols = {
+    USD: '$',
+    PEN: 'S/',
+    ARS: 'ARS $',
+    MXN: 'MXN $',
+    CLP: 'CLP $',
+    COP: 'COP $',
+    BRL: 'R$',
+    VES: 'Bs.',
+    PYG: '₲',
+    EUR: '€',
+};
+
+// Función para convertir moneda
 function convertCurrency() {
-    const amount = parseFloat(document.getElementById("amount").value);
-    const fromCurrency = document.getElementById("fromCurrency").value;
-    const toCurrency = document.getElementById("toCurrency").value;
-
-    // Nombres completos de las monedas
-    const currencyNames = {
-        "PEN": "Soles",
-        "USD": "Dólares Estadounidenses",
-        "ARS": "Pesos Argentinos",
-        "MXN": "Pesos Mexicanos",
-        "CLP": "Pesos Chilenos",
-        "COP": "Pesos Colombianos",
-        "BRL": "Reales Brasileños",
-        "VES": "Bolívares Venezolanos",
-        "PYG": "Guaraníes Paraguayos",
-        "EUR": "Euros"
-    };
-
-    // Tasas de cambio ficticias para monedas latinoamericanas
-    const exchangeRates = {
-        "PEN": { "USD": 0.27, "ARS": 25.85, "MXN": 5.00, "CLP": 220.00, "COP": 1050.00, "BRL": 1.30, "VES": 6.30, "PYG": 3850.00, "EUR": 0.23 },
-        "USD": { "PEN": 3.70, "ARS": 95.00, "MXN": 19.00, "CLP": 830.00, "COP": 3900.00, "BRL": 5.20, "VES": 32.00, "PYG": 7100.00, "EUR": 0.85 },
-        "ARS": { "PEN": 0.038, "USD": 0.011, "MXN": 0.20, "CLP": 8.75, "COP": 40.00, "BRL": 0.055, "VES": 0.35, "PYG": 75.00, "EUR": 0.009 },
-        "MXN": { "PEN": 0.20, "USD": 0.053, "ARS": 5.00, "CLP": 43.50, "COP": 200.00, "BRL": 0.27, "VES": 1.70, "PYG": 375.00, "EUR": 0.045 },
-        "CLP": { "PEN": 0.0045, "USD": 0.0012, "ARS": 0.11, "MXN": 0.023, "COP": 4.50, "BRL": 0.0062, "VES": 0.04, "PYG": 8.60, "EUR": 0.001 },
-        "COP": { "PEN": 0.001, "USD": 0.00026, "ARS": 0.025, "MXN": 0.005, "CLP": 0.22, "BRL": 0.0014, "VES": 0.008, "PYG": 1.90, "EUR": 0.00022 },
-        "BRL": { "PEN": 0.77, "USD": 0.19, "ARS": 18.00, "MXN": 3.70, "CLP": 160.00, "COP": 710.00, "VES": 6.20, "PYG": 1385.00, "EUR": 0.18 },
-        "VES": { "PEN": 0.16, "USD": 0.031, "ARS": 2.80, "MXN": 0.59, "CLP": 26.00, "COP": 120.00, "BRL": 0.16, "PYG": 223.00, "EUR": 0.016 },
-        "PYG": { "PEN": 0.00026, "USD": 0.00014, "ARS": 0.013, "MXN": 0.0027, "CLP": 0.12, "COP": 0.53, "BRL": 0.00072, "VES": 0.0045, "EUR": 0.00014 },
-        "EUR": { "PEN": 4.30, "USD": 1.17, "ARS": 120.00, "MXN": 22.00, "CLP": 950.00, "COP": 4550.00, "BRL": 5.50, "VES": 32.00, "PYG": 8050.00 }
-    };
-
+    // Obtener valores del formulario
+    const amount = parseFloat(document.getElementById('amount').value);
+    const fromCurrency = document.getElementById('fromCurrency').value;
+    const toCurrency = document.getElementById('toCurrency').value;
+    const resultDiv = document.getElementById('result');
+    
+    // Validar entrada
     if (isNaN(amount) || amount <= 0) {
-        document.getElementById("result").innerText = "Por favor, ingresa una cantidad válida.";
+        resultDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Por favor, ingresa una cantidad válida.';
+        resultDiv.style.borderLeft = '5px solid #e74c3c';
+        resultDiv.classList.add('result-visible');
         return;
     }
-
-    if (fromCurrency === toCurrency) {
-        document.getElementById("result").innerText = `El tipo de cambio es 1:1. ${amount} ${currencyNames[fromCurrency]} son ${amount} ${currencyNames[toCurrency]}.`;
-        return;
-    }
-
-    const rate = exchangeRates[fromCurrency][toCurrency];
-    const convertedAmount = (amount * rate).toFixed(2);
-
-    document.getElementById("result").innerText = `${amount} ${currencyNames[fromCurrency]} son ${convertedAmount} ${currencyNames[toCurrency]}.`;
+    
+    // Realizar la conversión
+    const valueInUSD = amount / exchangeRates[fromCurrency];
+    const convertedAmount = valueInUSD * exchangeRates[toCurrency];
+    
+    // Format the result with commas for thousands
+    const formattedOriginal = formatNumber(amount);
+    const formattedConverted = formatNumber(convertedAmount);
+    
+    // Mostrar el resultado
+    resultDiv.innerHTML = `
+        <div>
+            <span class="currency-symbol">${currencySymbols[fromCurrency]}</span> ${formattedOriginal} ${fromCurrency} =
+        </div>
+        <div style="font-size: 1.5rem; margin-top: 10px;">
+            <span class="currency-symbol">${currencySymbols[toCurrency]}</span> ${formattedConverted} ${toCurrency}
+        </div>
+    `;
+    resultDiv.style.borderLeft = '5px solid #2ecc71';
+    resultDiv.classList.add('result-visible');
+    
+    // Animación para el resultado
+    resultDiv.style.opacity = '0';
+    setTimeout(() => {
+        resultDiv.style.opacity = '1';
+    }, 10);
 }
+
+// Función para dar formato a números
+function formatNumber(number) {
+    return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+}
+
+// Inicializar elementos cuando la página cargue
+document.addEventListener('DOMContentLoaded', function() {
+    // Configurar el botón de intercambio
+    document.getElementById('swap-button').addEventListener('click', function() {
+        const fromCurrency = document.getElementById('fromCurrency');
+        const toCurrency = document.getElementById('toCurrency');
+        
+        // Guardar los valores actuales
+        const tempValue = fromCurrency.value;
+        
+        // Intercambiar los valores
+        fromCurrency.value = toCurrency.value;
+        toCurrency.value = tempValue;
+        
+        // Si hay un resultado previo, volver a hacer la conversión
+        const resultDiv = document.getElementById('result');
+        if (resultDiv.classList.contains('result-visible')) {
+            convertCurrency();
+        }
+        
+        // Animación para el botón
+        this.classList.add('rotate-animation');
+        setTimeout(() => {
+            this.classList.remove('rotate-animation');
+        }, 500);
+    });
+    
+    // Permitir que la tecla Enter active la conversión
+    document.getElementById('amount').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            convertCurrency();
+        }
+    });
+    
+    // Inicializar el resultado como oculto
+    document.getElementById('result').classList.remove('result-visible');
+});
+
+// Función para actualizar las tasas de cambio (simulación)
+function updateExchangeRates() {
+    // Aquí se podría implementar una llamada a una API real de tasas de cambio
+    console.log("Tasas de cambio actualizadas");
+    
+    // Actualizar la fecha de última actualización
+    const date = new Date();
+    document.querySelector('.last-update').innerHTML = 
+        `<i class="fas fa-clock"></i> Última actualización: ${date.toLocaleDateString()}`;
+}
+
+// Opcional: Actualizar tasas en intervalos (simulación)
+// setInterval(updateExchangeRates, 3600000); // Actualizar cada hora

@@ -9,55 +9,70 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h1 class="text-center mb-4">Conversor de Moneda</h1>
-                <form id="currency-form">
-                    <div class="form-group">
-                        <label for="amount">Cantidad:</label>
-                        <input type="number" id="amount" class="form-control" placeholder="Ingresa la cantidad" required>
+                <div class="converter-card">
+                    <div class="card-header">
+                        <i class="fas fa-exchange-alt header-icon"></i>
+                        <h1>Conversor de Moneda</h1>
                     </div>
-
-                    <div class="form-group">
-                        <label for="fromCurrency">De:</label>
-                        <select id="fromCurrency" class="form-control">
-                            <option value="PEN">Soles (PEN)</option>
-                            <option value="USD">Dólares Estadounidenses (USD)</option>
-                            <option value="ARS">Pesos Argentinos (ARS)</option>
-                            <option value="MXN">Pesos Mexicanos (MXN)</option>
-                            <option value="CLP">Pesos Chilenos (CLP)</option>
-                            <option value="COP">Pesos Colombianos (COP)</option>
-                            <option value="BRL">Reales Brasileños (BRL)</option>
-                            <option value="VES">Bolívares Venezolanos (VES)</option>
-                            <option value="PYG">Guaraníes Paraguayos (PYG)</option>
-                            <option value="EUR">Euros (EUR)</option>
-                        </select>
+                    <form id="currency-form">
+                        <div class="form-group">
+                            <label for="amount"><i class="fas fa-money-bill-wave"></i> Cantidad:</label>
+                            <input type="number" id="amount" class="form-control" placeholder="Ingresa la cantidad" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fromCurrency"><i class="fas fa-long-arrow-alt-right"></i> De:</label>
+                            <select id="fromCurrency" class="form-control">
+                                <option value="PEN">Soles (PEN)</option>
+                                <option value="USD">Dólares Estadounidenses (USD)</option>
+                                <option value="ARS">Pesos Argentinos (ARS)</option>
+                                <option value="MXN">Pesos Mexicanos (MXN)</option>
+                                <option value="CLP">Pesos Chilenos (CLP)</option>
+                                <option value="COP">Pesos Colombianos (COP)</option>
+                                <option value="BRL">Reales Brasileños (BRL)</option>
+                                <option value="VES">Bolívares Venezolanos (VES)</option>
+                                <option value="PYG">Guaraníes Paraguayos (PYG)</option>
+                                <option value="EUR">Euros (EUR)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="swap-button-container">
+                            <button type="button" id="swap-button" class="btn btn-light btn-sm">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="toCurrency"><i class="fas fa-long-arrow-alt-left"></i> A:</label>
+                            <select id="toCurrency" class="form-control">
+                                <option value="USD">Dólares Estadounidenses (USD)</option>
+                                <option value="PEN">Soles (PEN)</option>
+                                <option value="ARS">Pesos Argentinos (ARS)</option>
+                                <option value="MXN">Pesos Mexicanos (MXN)</option>
+                                <option value="CLP">Pesos Chilenos (CLP)</option>
+                                <option value="COP">Pesos Colombianos (COP)</option>
+                                <option value="BRL">Reales Brasileños (BRL)</option>
+                                <option value="VES">Bolívares Venezolanos (VES)</option>
+                                <option value="PYG">Guaraníes Paraguayos (PYG)</option>
+                                <option value="EUR">Euros (EUR)</option>
+                            </select>
+                        </div>
+                        
+                        <button type="button" class="btn btn-primary btn-block" onclick="convertCurrency()">
+                            <i class="fas fa-calculator"></i> Convertir
+                        </button>
+                    </form>
+                    <div id="result" class="mt-4 text-center"></div>
+                    <div class="last-update">
+                        <i class="fas fa-clock"></i> Última actualización: Marzo 2025
                     </div>
-
-                    <div class="form-group">
-                        <label for="toCurrency">A:</label>
-                        <select id="toCurrency" class="form-control">
-                            <option value="USD">Dólares Estadounidenses (USD)</option>
-                            <option value="PEN">Soles (PEN)</option>
-                            <option value="ARS">Pesos Argentinos (ARS)</option>
-                            <option value="MXN">Pesos Mexicanos (MXN)</option>
-                            <option value="CLP">Pesos Chilenos (CLP)</option>
-                            <option value="COP">Pesos Colombianos (COP)</option>
-                            <option value="BRL">Reales Brasileños (BRL)</option>
-                            <option value="VES">Bolívares Venezolanos (VES)</option>
-                            <option value="PYG">Guaraníes Paraguayos (PYG)</option>
-                            <option value="EUR">Euros (EUR)</option>
-                        </select>
-                    </div>
-
-                    <button type="button" class="btn btn-primary btn-block" onclick="convertCurrency()">Convertir</button>
-                </form>
-                <div id="result" class="mt-4 text-center"></div>
+                </div>
             </div>
         </div>
     </div>
-    
     <!-- Bootstrap and jQuery scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
