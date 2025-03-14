@@ -1,28 +1,48 @@
-# Convierta Monedas
+# 🌎 Convierta Monedas  
 
-**Convierta Monedas** es una aplicación web que permite a los usuarios convertir diferentes monedas latinoamericanas de forma rápida y sencilla. La aplicación es fácil de usar y tiene una interfaz amigable, diseñada con HTML, CSS, JavaScript y Bootstrap para garantizar una experiencia de usuario óptima.
+**Convierta Monedas** es una aplicación web que permite convertir diferentes monedas latinoamericanas de forma rápida y sencilla. Diseñada con una interfaz intuitiva y moderna, ofrece una experiencia fluida para los usuarios que necesitan realizar conversiones de divisas de manera eficiente.  
 
-## Características
+---
 
-- Conversión entre varias monedas latinoamericanas, incluyendo:
-  - **Soles (PEN)**
-  - **Dólares Estadounidenses (USD)**
-  - **Pesos Argentinos (ARS)**
-  - **Pesos Mexicanos (MXN)**
-  - **Pesos Chilenos (CLP)**
-  - **Pesos Colombianos (COP)**
-  - **Reales Brasileños (BRL)**
-  - **Bolívares Venezolanos (VES)**
-  - **Guaraníes Paraguayos (PYG)**
-  - **Euros (EUR)**
+## 🚀 Características  
 
-- Interfaz responsiva y atractiva gracias al uso de Bootstrap.
-- Entrada de cantidad y selección de monedas de origen y destino mediante menús desplegables.
-- Resultado de conversión mostrado de manera clara y concisa.
+✅ **Conversión en tiempo real** entre múltiples monedas latinoamericanas y el Euro.  
+✅ **Interfaz responsiva y amigable** con Bootstrap.  
+✅ **Selección sencilla** de monedas de origen y destino mediante menús desplegables.  
+✅ **Resultados instantáneos**, mostrados de manera clara y concisa.  
 
-## Tecnologías Utilizadas
+### 💰 Monedas Soportadas  
+✔️ **Soles Peruanos (PEN)**  
+✔️ **Dólares Estadounidenses (USD)**  
+✔️ **Pesos Argentinos (ARS)**  
+✔️ **Pesos Mexicanos (MXN)**  
+✔️ **Pesos Chilenos (CLP)**  
+✔️ **Pesos Colombianos (COP)**  
+✔️ **Reales Brasileños (BRL)**  
+✔️ **Bolívares Venezolanos (VES)**  
+✔️ **Guaraníes Paraguayos (PYG)**  
+✔️ **Euros (EUR)**  
 
-- **HTML**: Para la estructura del contenido.
-- **CSS**: Para el diseño y la presentación.
-- **JavaScript**: Para la lógica de conversión de monedas.
-- **Bootstrap**: Para facilitar el diseño responsivo y moderno de la interfaz.
+---
+
+## 🛠️ Tecnologías Utilizadas  
+
+🔹 **HTML** – Estructura del contenido.  
+🔹 **CSS** – Estilización y presentación.  
+🔹 **JavaScript** – Lógica de conversión de monedas.  
+🔹 **Bootstrap** – Diseño moderno y responsivo.  
+
+---
+
+## 📸 Capturas de Pantalla *(Opcional: Agrega imágenes aquí)*  
+📷 *Ejemplo de la interfaz de usuario...*  
+
+---
+
+## 📌 Cómo Usar la Aplicación  
+
+1️⃣ Ingresa la cantidad de dinero a convertir.  
+2️⃣ Selecciona la moneda de origen.  
+3️⃣ Selecciona la moneda de destino.  
+4️⃣ Obtén la conversión instantáneamente.  
+
