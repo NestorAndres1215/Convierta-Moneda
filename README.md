@@ -34,8 +34,9 @@
 
 ---
 
-## 📸 Capturas de Pantalla *(Opcional: Agrega imágenes aquí)*  
-📷 *Ejemplo de la interfaz de usuario...*  
+## 📸 Capturas de Pantalla  
+![image](https://github.com/user-attachments/assets/b27abd20-9e5a-4702-9c67-0dba5327769b)
+
 
 ---
 
